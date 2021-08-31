@@ -15,11 +15,13 @@ const main = async() => {
 
         if (argv.add && argv.name) {
             //node index.js --add --name 'Test film 4'
+            //test pui_edit branch
+            
             const { _, add, ...options } = {...argv};
             delete options['$0'];
             console.log(options);
+            await addFilm(argv.name); 
 
-            await addFilm(argv.name);
         }
 
         if (argv.edit && argv.name && argv.newName) {
