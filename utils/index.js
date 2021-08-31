@@ -1,4 +1,5 @@
 const Film = require("../models/film");
+const User = require("../models/user");
 
 const addFilm = async(name) => {
     const film = Film.build({name});

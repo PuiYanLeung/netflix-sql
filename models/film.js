@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const { connection } = require("../db");
+const User = require("./user");
 
 const Film = connection.define("Film", {
     name: {
@@ -24,8 +25,18 @@ const Film = connection.define("Film", {
     rating: {
         type: DataTypes.INTEGER,
         validate: { min: 1, max: 5 }
+    }, 
+    userId: {
+        type: DataTypes.INTEGER,
+         references: {
+             model: User,
+             key: 'id'
+         }
     }
 }, {});
+
+Film.hasOne(User, { foreignKey: 'userId' });
+User.belongsTo(Film);
 
 const main = async() => {
     try {
