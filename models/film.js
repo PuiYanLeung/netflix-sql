@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { connection } = require("../db");
 
-const Album = connection.define("Album", {
+const Film = connection.define("Film", {
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -10,7 +10,7 @@ const Album = connection.define("Album", {
 
 const main = async() => {
     try {
-        await Album.sync({alter: true});
+        await Film.sync({alter: true});
     } catch (error) {
         console.log(error);
     }
@@ -18,4 +18,4 @@ const main = async() => {
 
 main();
 
-module.exports = Album;
+module.exports = Film;

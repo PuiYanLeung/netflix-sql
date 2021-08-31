@@ -1,38 +1,36 @@
-const Song = require("../models/song");
-const Album = require("../models/album");
-const Artist = require("../models/artist");
+const Film = require("../models/film");
 
-const addSong = async(name) => {
-    const song = Song.build({name});
-    await song.save();
-    console.log(`Added: ${song.name}`);
+const addFilm = async(name) => {
+    const film = Film.build({name});
+    await film.save();
+    console.log(`Added: ${film.name}`);
 }
 
-const editSong = async(oldName, newName) => {
-    const songs = await Song.update(
+const editFilm = async(oldName, newName) => {
+    const films = await Film.update(
         {name: newName},
         {where: {name: oldName}}
     );
 
-    console.log(`Edited: ${songs} songs(s)`);
+    console.log(`Edited: ${films} film(s)`);
 }
 
-const showSong = async(name) => {
-    const songs = await Song.findAll({where: {name}});
+const showFilm = async(name) => {
+    const films = await Film.findAll({where: {name}});
 
-    for (let song of songs) {
-        console.log(`Showing: ${song.name}`);
+    for (let film of films) {
+        console.log(`Showing: ${film.name}`);
     }
 }
 
-const removeSong = async(name) => {
-    const songs = await Song.destroy({where: {name}});
-    console.log(`Removed: ${songs} songs(s)`);
+const removeFilm = async(name) => {
+    const films = await Film.destroy({where: {name}});
+    console.log(`Removed: ${films} film(s)`);
 }
 
 module.exports = {
-    addSong,
-    editSong,
-    showSong,
-    removeSong,
+    addFilm,
+    editFilm,
+    showFilm,
+    removeFilm
 }
